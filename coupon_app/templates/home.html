@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Home</title>
+</head>
+
+<body>
+  <h1>Welcome to the Coupon App</h1>
+  <p><a href="{% url 'generate_qr' %}">Generate QR Code</a></p>
+  <p><a href="{% url 'coupon_page' %}">Coupon Page</a></p>
+  <p><a href="/admin">Admin Page</a></p>
+  <p>Current URL: {{ request.build_absolute_uri }}</p>
+</body>
+
+</html>

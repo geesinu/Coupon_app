@@ -1,0 +1,113 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>活動套票換領卷</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Noto Sans TC', sans-serif;
+    }
+
+    .coupon-container {
+      background: url("{% static 'images/background8.png' %}") no-repeat center center;
+      background-size: cover; /* Adjust as necessary to fit your container size */
+      border: none;
+      border-radius: 15px;
+      color: #ffd700;
+      padding: 70px 20px;
+      max-width: 600px;
+      margin: 50px auto;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .coupon-container::before,
+    .coupon-container::after {
+      content: '';
+      display: block;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(255, 215, 0, 0) 0%, #ffd700 50%, rgba(255, 215, 0, 0) 100%);
+      margin: 20px auto;
+    }
+
+    .coupon-header,
+    .coupon-footer {
+      background-color: rgba(0, 0, 0, 0);
+      /* Changed to a darker shade for better legibility */
+      padding: 10px 0;
+      margin: 10px 0;
+      border-radius: 10px;
+    }
+
+    .coupon-container h1,
+    .coupon-container h2 {
+      color: #ffd700;
+    }
+
+    .coupon-logo {
+      max-width: 120px;
+      margin: 0 auto 20px;
+      display: block;
+    }
+
+    .coupon-code,
+    .coupon-message {
+      font-size: 24px;
+      margin: 15px 0;
+      background-color: rgba(0, 0, 0, 0.0);
+      /* More opacity for content background */
+      color: #ffd700;
+      /* Ensuring the text is legible */
+      padding: 10px 0;
+      border-radius: 5px;
+    }
+
+    .golden-decor {
+      color: #ffd700;
+      font-size: 22px;
+    }
+  </style>
+  {% load static %}
+</head>
+
+<body>
+  <div class="coupon-container">
+    <div class="coupon-header">
+      <img src="{% static 'images/transparent_logo.png' %}" alt="Company Logo" class="coupon-logo">
+      <h1>大棠有機生態園</h1>
+      <h2>活動套票換領卷</h2>
+    </div>
+    <p>有效日期：2024/1/27至2024/3/27</p>
+    {% if coupon_number %}
+    <div class="coupon-code">券號碼: {{ coupon_number }}</div>
+    {% elif all_coupons_distributed %}
+    <div class="coupon-message">所有優惠券已發放完畢</div>
+    {% elif coupon_claimed %}
+    <div class="coupon-message">已換取優惠券</div>
+    {% else %}
+    <p>暫無抽獎券可用。</p>
+    {% endif %}
+    <div class="coupon-footer">
+      <p>此券僅限於指定日期及活動使用，並受有關條款及細則約束。</p>
+    </div>
+  </div>
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.cookie = "screen_resolution=" + window.screen.width + "x" + window.screen.height;
+  </script>
+</body>
+
+</html>
+
+coupon_claimed
